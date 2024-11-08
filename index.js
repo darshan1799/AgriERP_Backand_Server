@@ -33,7 +33,6 @@ app.get("/", async (req, res) => {
 
 app.post("/", async (req, res) => {
   const market_price_data = await fetchData();
-
   try {
     const addadata = new market_model(market_price_data);
     const savedata = await addadata.save();
