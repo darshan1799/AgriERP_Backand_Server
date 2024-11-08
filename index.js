@@ -26,10 +26,10 @@ const fetchData = async () => {
     records: data.records,
   });
 };
-app.get("/", async (req, res) => {
-  const market_price_data = await fetchData();
-  res.send(market_price_data);
-});
+// app.get("/", async (req, res) => {
+//   const market_price_data = await fetchData();
+//   res.send(market_price_data);
+// });
 
 app.post("/", async (req, res) => {
   const market_price_data = await fetchData();

@@ -2,7 +2,7 @@ const connect = require("./marketdata");
 const mongoose = require("mongoose");
 
 const marketdataschema = new mongoose.Schema({
-  updated_date: { type: Date, unique: true },
+  updated_date: { type: Date },
   arrival_date: String,
   total: Number,
   records: Array,
