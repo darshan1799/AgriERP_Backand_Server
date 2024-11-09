@@ -7,9 +7,10 @@ const app = express();
 
 const getPastDate = () => {
   const PastDate = new Date();
+
   PastDate.setDate(PastDate.getDate() - 1);
 
-  return PastDate.toLocaleDateString();
+  return PastDate.toLocaleDateString("en-GB");
 };
 
 const fetchData = async () => {
