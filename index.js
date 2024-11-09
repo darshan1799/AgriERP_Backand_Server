@@ -8,11 +8,13 @@ const app = express();
 const getPastDate = () => {
   const PastDate = new Date();
   PastDate.setDate(PastDate.getDate() - 1);
+
   return PastDate.toLocaleDateString();
 };
 
 const fetchData = async () => {
   const pastdate = getPastDate();
+
   const response = await fetch(
     `${process.env.API_URL}?api-key=${
       process.env.API_KEY
@@ -36,7 +38,7 @@ app.post("/", async (req, res) => {
   try {
     const addadata = new market_model(market_price_data);
     const savedata = await addadata.save();
-    res.send(savedata);
+    res.send({ status: "Data added successfully" });
   } catch (e) {
     res.send(e.message);
   }
