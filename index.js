@@ -12,12 +12,24 @@ const getPastDate = () => {
 
   return PastDate.toLocaleDateString("en-GB");
 };
-getPastDate();
 
+const getCurrentTime = () => {
+  const now = new Date();
+  const istOffset = 5.5 * 60 * 60 * 1000; // IST offset in milliseconds (5 hours 30 minutes)
+  const timeIST = new Date(now.getTime() + istOffset);
+  const hoursIST = timeIST.getUTCHours().toString().padStart(2, "0");
+  const minutesIST = timeIST.getUTCMinutes().toString().padStart(2, "0");
+  const secondIst = timeIST.getUTCSeconds().toString().padStart(2, "0");
+  const ampm = hoursIST >= 12 ? "PM" : "AM";
+  const formattedTimeIST = `${hoursIST}:${minutesIST}:${secondIst} ${ampm}`;
+  return formattedTimeIST;
+};
+
+getCurrentTime();
 const fetchData = async () => {
   const pastdate = getPastDate();
-  const time = new Date();
-  const CurrentTime = time.toLocaleTimeString();
+
+  const CurrentTime = getCurrentTime();
 
   const response = await fetch(
     `${process.env.API_URL}?api-key=${
