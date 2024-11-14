@@ -12,9 +12,12 @@ const getPastDate = () => {
 
   return PastDate.toLocaleDateString("en-GB");
 };
+getPastDate();
 
 const fetchData = async () => {
   const pastdate = getPastDate();
+  const time = new Date();
+  const CurrentTime = time.toLocaleTimeString();
 
   const response = await fetch(
     `${process.env.API_URL}?api-key=${
@@ -24,6 +27,7 @@ const fetchData = async () => {
   const data = await response.json();
   return (Market_Price_Obj = {
     updated_date: data.updated_date,
+    uploaded_time: CurrentTime,
     arrival_date: pastdate,
     total: data.total,
     records: data.records,

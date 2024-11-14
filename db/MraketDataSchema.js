@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 
 const marketdataschema = new mongoose.Schema({
   updated_date: { type: Date, unique: true },
+  uploaded_time: String,
   arrival_date: String,
   total: Number,
   records: Array,
