@@ -53,10 +53,9 @@ const fetchData = async () => {
 app.get("/", async (req, res) => {
   try {
     const response = await market_model.find({});
-    const data = await response.json();
-    res.status(200).json({ data });
+    res.status(200).json(response);
   } catch (e) {
-    res.status(404).json({ msg: "no data found!" });
+    res.status(404).json({ msg: "no data found!", err: e.message });
   }
 });
 
