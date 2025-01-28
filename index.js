@@ -55,9 +55,9 @@ app.post("/", async (req, res) => {
   try {
     const addadata = new market_model(market_price_data);
     const savedata = await addadata.save();
-    res.send({ status: "Data added successfully" });
+    res.status(200).send({ msg: "Data added successfully" });
   } catch (e) {
-    res.send(e.message);
+    res.status(400).send({ msg: "data already addded!", err: e.message });
   }
 });
 
