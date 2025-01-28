@@ -1,0 +1,12 @@
+name: Scheduled Task
+
+on:
+  schedule:
+    - cron: '0 23 * * *' # Runs at 11:00 PM UTC (4:30 AM IST)
+
+jobs:
+  run-task:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Render Server
+        run: curl -X POST https://agrierp-backand-server.onrender.com

@@ -1,0 +1,12 @@
+name: Scheduled Task
+
+on:
+  schedule:
+    - cron: '30 2 * * *' 
+
+jobs:
+  run-task:
+    runs-on: ubuntu-latest # GitHub's cloud environment
+    steps:
+      - name: Trigger Render Server
+        run: curl -X POST https://agrierp-backand-server.onrender.com
